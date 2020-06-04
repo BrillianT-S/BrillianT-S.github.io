@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" >
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="分享生活" />
+   
+  <meta name="description" content="博客,移动开发,blog" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    链表的学习 |  马小跳的秘密基地
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/images/探测器.SVG.png" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-链表的学习" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  链表的学习
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/04/%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2020-06-04T14:19:06.000Z" itemprop="datePublished">2020-06-04</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>果然专业课还是一点也不能水，上学期最后的指针没认真学，现在看书自学还得先补上学期的知识漏洞😑<br>今天复习了指针的知识，还学习了一部分链表的内容，下面记录下今天的学习内容<br>在存储一大波数的时候，我们通常使用的是数组，但有时候数组显得不够灵活，比如下面这个例子。<br>有一串已经从小到大排好序的数 2 3 5 8 9 10 18 26 32。现需要往这串数中插入 6 使其得到的新序列仍符合从小到大排列。如我们使用数组来实现这一操作，则需要将8和8后面的数都依次往后挪一位，这样操作显然很耽误时间，如果使用链表则会快很多。</p>
+<h1 id="指针的复习"><a href="#指针的复习" class="headerlink" title="指针的复习"></a>指针的复习</h1><p>先看以下语句：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span> *p;</span><br></pre></td></tr></table></figure>
+<p>第一行我们很熟悉了，就是定义一个整型变量 a。第二行你会发现在 p 前面多了一个<em>号，这就表示定义了一个整型指针变量 p。即定义一个指针，只需在变量前面加一个</em>号就<br>OK啦。接下来，指针有什么作用呢？答案是：存储一个地址。确切地说是存储一个内存空间的地址，比如说整型变量 a 的地址。严格地说这里的指针 p 也只能存储“一个存放整数的内存空间”的地址，因为在定义的时候我们已经限制了这一点（即定义的时候*p 的前面是 int）。当然你也可以定义一个只能用来存储“一个存放浮点数的内存空间”的地址，例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> *p;</span><br></pre></td></tr></table></figure>
+<p>简单地说，指针就是用来存储地址的。你可能要问：不就是存储地址嘛，地址不都一样吗，为什么还要分不同类型的指针呢？不要着急，待会后面再解释。接下来需要解决的一个<br>问题：整型指针 p 如何才能存储整型变量 a 的地址呢？很简单，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p=&amp;a;</span><br></pre></td></tr></table></figure>
+<p>&amp;这个符号很熟悉吧，就是经常在 scanf 函数中用到的&amp;。&amp;叫取地址符。这样整型指针p就获得了（存储了）整型变量a的地址，我们可以形象地理解整型指针p指向了整型变量a。p指向了a之后，有什么用呢？用处就是我们可以用指针p来操作变量a了。比如我们可以通过操作指针p来输出变量a的值，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">10</span>; </span><br><span class="line">    <span class="keyword">int</span> *p; <span class="comment">//定义个指针p </span></span><br><span class="line">    p=&amp;a; <span class="comment">//指针p获取变量a的地址</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,*p); <span class="comment">//输出指针p所指向的内存中的值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">    <span class="comment">//输出10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里 printf 语句里面<em>p 中的</em>号叫做间接运算符，作用是取得指针 p 所指向的内存中的值。在C语言中*号有三个用途，分别是：</p>
+<ol>
+<li>乘号，用做乘法运算，例如 5*6。</li>
+<li>申明一个指针，在定义指针变量时使用，例如 int *p;。</li>
+<li>间接运算符，取得指针所指向的内存中的值，例如 printf(“%d”,*p);。<br>到目前为止，你可能还是觉得指针没啥子实际作用，好好的变量 a 想输出是的话直接printf(“%d”,a); 不完了，没事搞个什么指针啊，多此一举。嗯，到目前为止貌似是这样的<br>O(∩_∩)O 哈哈~~不要着急，真枪实弹地来了。回想一下，我们想在程序中存储一个整数 10，除了使用 int a;这种方式在内存中申请一块区域来存储，还有另外一种动态存储方法:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">malloc</span>(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+malloc 函数的作用就是从内存中申请分配指定字节大小的内存空间。上面这行代码就申请了 4 个字节。如果你不知道 int 类型是 4 个字节的，还可以使用 sizeof(int)获取 int 类型所<br>占用的字节数，如下：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br></pre></td></tr></table></figure>
+现在你已经成功地从内存中申请了 4 个字节的空间来准备存放一个整数，可是如何来<br>对这个空间进行操作呢？这里我们就需要用一个指针来指向这个空间，即存储这个空间的<br>首地址。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p; </span><br><span class="line">p=(<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br></pre></td></tr></table></figure>
+需要注意，malloc 函数的返回类型是 void * 类型。void * 表示未确定类型的指针。在 C 和 C++中，void * 类型可以强制转换为任何其他类型的指针。上面代码中我们将其强制转化为整型指针，以便告诉计算机这里的 4 个字节作为一个整体用来存放整数。还记得我们之前遗留了一个问题：指针就是用来存储内存地址的，为什么要分不同类型的指针呢？因为指针变量存储的是一个内存空间的首地址（第一个字节的地址），但是这个空间占用了多少个字节，用来存储什么类型的数，则是由指针的类型来标明的。这样系统才知道应该取多少个连续内存作为一个数据。<br>OK，现在我们可以通过指针 p 对刚才申请的 4 个字节的空间进行操作了，例如我们向这个空间中存入整数 10，如下：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*p=<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+完整代码如下，注意当在程序中使用 malloc 函数时需要用到 stdlib.h 头文件<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">int</span> *p; <span class="comment">//定义一个指针p </span></span><br><span class="line">    p=(<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)); <span class="comment">//指针p获取动态分配的内存空间地址</span></span><br><span class="line">    *p=<span class="number">10</span>; <span class="comment">//向指针p所指向的内存空间中存入10 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,*p); <span class="comment">//输出指针p所指向的内存中的值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">    <span class="comment">//输出10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="链表基础的学习"><a href="#链表基础的学习" class="headerlink" title="链表基础的学习"></a>链表基础的学习</h1><p>时间有限，直接上代码和注释：</p>
+<h2 id="使用链表进行读入"><a href="#使用链表进行读入" class="headerlink" title="使用链表进行读入"></a>使用链表进行读入</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt; </span></span></span><br><span class="line"><span class="comment">//这里创建一个结构体用来表示链表的结点类型</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> </span></span><br><span class="line"><span class="class">&#123;</span> </span><br><span class="line">    <span class="keyword">int</span> data; <span class="comment">//吹村具体数值</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span> <span class="comment">//储存下一个节点的地址</span></span><br><span class="line">&#125;; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">head</span>,*<span class="title">p</span>,*<span class="title">q</span>,*<span class="title">t</span>;</span> </span><br><span class="line">    <span class="keyword">int</span> i,n,a; </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n); </span><br><span class="line">    head = <span class="literal">NULL</span>;<span class="comment">//头指针初始为空,头指针的作用是方便以后从头遍历整个链表</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//循环读入n个数</span></span><br><span class="line">    &#123; </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a); </span><br><span class="line">        <span class="comment">//动态申请一个空间，用来存放一个结点，并用临时指针p指向这个结点</span></span><br><span class="line">        p=(struct node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct node)); </span><br><span class="line">        p-&gt;data=a;<span class="comment">//将数据存储到当前结点的data域中</span></span><br><span class="line">        p-&gt;next=<span class="literal">NULL</span>;<span class="comment">//设置当前结点的后继指针指向空，也就是当前结点的下一个结点为空</span></span><br><span class="line">        <span class="keyword">if</span>(head==<span class="literal">NULL</span>) </span><br><span class="line">        head=p;<span class="comment">//如果这是第一个创建的结点，则将头指针指向这个结点</span></span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">        q-&gt;next=p;<span class="comment">//如果不是第一个创建的结点，则将上一个结点的后继指针指向当前结点</span></span><br><span class="line">        q=p;<span class="comment">//指针q也指向当前结点</span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">//输出链表中的所有数</span></span><br><span class="line">    t=head; </span><br><span class="line">    <span class="keyword">while</span>(t!=<span class="literal">NULL</span>) </span><br><span class="line">    &#123; </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,t-&gt;data); </span><br><span class="line">        t=t-&gt;next;<span class="comment">//继续下一个结点</span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码中我们发现了一个很奇怪的符号“-&gt;”。-&gt;叫做结构体指针运算符，也是用来访问结构体内部成员的。因为此处 p 是一个指针，所以不能使用.号访问内部成员，而要使用-&gt;。</p>
+<h2 id="链表实现数据的插入"><a href="#链表实现数据的插入" class="headerlink" title="链表实现数据的插入"></a>链表实现数据的插入</h2><p>```cpp<br>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>//这里创建一个结构体用来表示链表的结点类型<br>struct node<br>{<br>    int data;<br>    struct node <em>next;<br>};<br>int main()<br>{<br>    struct node *head,</em>p,<em>q,</em>t;<br>    int i,n,a;<br>    scanf(“%d”,&amp;n);<br>    head = NULL;//头指针初始为空<br>    for(i=1;i&lt;=n;i++)//循环读入n个数<br>    {<br>        scanf(“%d”,&amp;a);<br>        //动态申请一个空间，用来存放一个结点，并用临时指针p指向这个结点<br>        p=(struct node *)malloc(sizeof(struct node));<br>        p-&gt;data=a;//将数据存储到当前结点的data域中<br>        p-&gt;next=NULL;//设置当前结点的后继指针指向空，也就是当前结点的下一个结点为空<br>        if(head==NULL)<br>            head=p;//如果这是第一个创建的结点，则将头指针指向这个结点<br>        else<br>            q-&gt;next=p;//如果不是第一个创建的结点，则将上一个结点的后继指针指向当前结点<br>        q=p;//指针q也指向当前结点<br>    } </p>
+<pre><code>scanf(&quot;%d&quot;,&amp;a);//读入待插入的数
+t=head;//从链表头部开始遍历
+while(t!=NULL)//当没有到达链表尾部的时候循环
+{ 
+    if(t-&gt;next-&gt;data &gt; a)//如果当前结点下一个结点的值大于待插入数，将数插入到中间
+    { 
+        p=(struct node *)malloc(sizeof(struct node));//动态申请一个空间，
+        用来存放新增结点
+        p-&gt;data=a; 
+        p-&gt;next=t-&gt;next;//新增结点的后继指针指向当前结点的后继指针所指向的结点
+        t-&gt;next=p;//当前结点的后继指针指向新增结点
+        break;//插入完毕退出循环
+    } 
+    t=t-&gt;next;//继续下一个结点
+} 
+//输出链表中的所有数
+t=head; 
+while(t!=NULL) 
+{ 
+    printf(&quot;%d &quot;,t-&gt;data); 
+    t=t-&gt;next;//继续下一个结点
+} 
+return 0; </code></pre><p>}</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://brillianttt.gitee.io/2020/06/04/%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/06/03/%E4%BD%8D%E8%BF%90%E7%AE%97%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">位运算的使用</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'XvNNOWhzEBQMyp46uy8sPsLd-gzGzoHsz',
+        app_key: 'JW87U3Se7XWkV2cpifIz16tC',
+        path: window.location.pathname,
+        notify: 'true',
+        verify: 'true',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        马小跳
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <a href="" target="_black">这是一个想备案然而并没有备案的网站</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1278749725&amp;web_id=1278749725'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/宇航员.SVG.svg" alt="马小跳的秘密基地"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请辛巴吃点儿小鱼干吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['能受天磨真好汉 不遭人嫉是庸才', '', ''],
+      startDelay: 0,
+      typeSpeed: 220,
+      loop: true,
+      backSpeed: 150,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+ <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1300140490&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script type="text/javascript">
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278748452'%3E%983C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278748452' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+</body>
+
+</html>
