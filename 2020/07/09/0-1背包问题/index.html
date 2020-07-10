@@ -72,7 +72,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">370</span>
+            <span class="post-count">883</span>
         </span>
     </span>
 
@@ -81,7 +81,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -92,6 +92,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -107,7 +109,7 @@
       <p>首先两个概念：</p>
 <p>背包问题：有某些物品，每个物品有一个重量w[i],价值v[i]，现在有一个容量为t的背包，问这个背包能存放的物品的价值和最大时多少？</p>
 <p>01背包问题：有n个物品，每一个物品有一个重量w[i]，价值v[i],现在有一个容量为t的背包，问这个背包的能存放的物品的价值和最大是多少？</p>
-<p>dp[i][j],前i个物品，容量为j的背包，所能存放的物品的最大价值是多少。</p>
+<h1 id="dp实现"><a href="#dp实现" class="headerlink" title="dp实现"></a>dp实现</h1><p>dp[i][j],前i个物品，容量为j的背包，所能存放的物品的最大价值是多少。</p>
 <p>举个栗子：</p>
 <table>
 <thead>
@@ -230,8 +232,37 @@
 <td align="center">13</td>
 <td align="center">13</td>
 </tr>
+<tr>
+<td align="center">## 例1：采药问题</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">这是<a href="https://www.oj.swust.edu.cn:50443/problem/show/1046" target="_blank" rel="noopener">题目链接</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
 </tbody></table>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e3</span>+<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">int</span> t,m;  </span><br><span class="line">     <span class="built_in">cin</span>&gt;&gt;t&gt;&gt;m;</span><br><span class="line">     <span class="keyword">int</span> w[maxn],v[maxn];</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">     &#123;</span><br><span class="line">          <span class="built_in">cin</span>&gt;&gt;w[i]&gt;&gt;v[i];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">int</span> dp[<span class="number">105</span>][<span class="number">1005</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=t;j++)</span><br><span class="line">          &#123;</span><br><span class="line">               dp[i][j]=dp[i<span class="number">-1</span>][j];</span><br><span class="line">               <span class="keyword">if</span>(j&gt;=w[i])</span><br><span class="line">               &#123;</span><br><span class="line">                    dp[i][j]=max(dp[i][j],dp[i<span class="number">-1</span>][j-w[i]]+v[i]);<span class="comment">//状态转移方程</span></span><br><span class="line">               &#125;</span><br><span class="line">          &#125;</span><br><span class="line">     <span class="built_in">cout</span>&lt;&lt;dp[m][t];     </span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将上面的代码做一个滚动优化：</p>
+<p>根据状态转移方程，当前状态只和其前一个状态有关，所以只需使用dp[2][x]。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e3</span>+<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">int</span> t,m;  </span><br><span class="line">     <span class="built_in">cin</span>&gt;&gt;t&gt;&gt;m;</span><br><span class="line">     <span class="keyword">int</span> w[maxn],v[maxn];</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">     &#123;</span><br><span class="line">          <span class="built_in">cin</span>&gt;&gt;w[i]&gt;&gt;v[i];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">int</span> dp[<span class="number">2</span>][<span class="number">1005</span>]=&#123;<span class="number">0</span>&#125;;<span class="comment">//占用空间减小了</span></span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">     &#123;</span><br><span class="line">          <span class="keyword">int</span> p=i&amp;<span class="number">1</span>;<span class="comment">//如果i是奇数p=1，否则p=0</span></span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=t;j++)</span><br><span class="line">          &#123;</span><br><span class="line">               dp[p][j]=dp[!p][j];</span><br><span class="line">               <span class="keyword">if</span>(j&gt;=w[i])</span><br><span class="line">               &#123;</span><br><span class="line">                    dp[p][j]=max(dp[p][j],dp[!p][j-w[i]]+v[i]);<span class="comment">//状态转移方程</span></span><br><span class="line">               &#125;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">          </span><br><span class="line">     <span class="built_in">cout</span>&lt;&lt;dp[m&amp;<span class="number">1</span>][t];     </span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用一维dp再优化下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e3</span>+<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">int</span> t,m;  </span><br><span class="line">     <span class="built_in">cin</span>&gt;&gt;t&gt;&gt;m;</span><br><span class="line">     <span class="keyword">int</span> w[maxn],v[maxn];</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">     &#123;</span><br><span class="line">          <span class="built_in">cin</span>&gt;&gt;w[i]&gt;&gt;v[i];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">int</span> dp[<span class="number">1005</span>]=&#123;<span class="number">0</span>&#125;;<span class="comment">//换成了一维数组</span></span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">     &#123;</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j=t;j&gt;=<span class="number">0</span>;j+--)<span class="comment">//这里的j&gt;=0可以换成j&gt;=w[i],下面的if语句就也可以去掉了</span></span><br><span class="line">          &#123;</span><br><span class="line">               dp[j]=dp[j]<span class="comment">//这句其实没用，就是对照下二维dp的dp[i][j]=dp[i-1][j]</span></span><br><span class="line">               <span class="keyword">if</span>(j&gt;=w[i])</span><br><span class="line">               &#123;</span><br><span class="line">                   dp[j]=max(dp[j],dp[j-w[i]]+v[i]);</span><br><span class="line">               &#125;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">          </span><br><span class="line">     <span class="built_in">cout</span>&lt;&lt;dp[t];     </span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
       <!-- reward -->
       
