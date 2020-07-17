@@ -232,31 +232,8 @@
 <td align="center">13</td>
 <td align="center">13</td>
 </tr>
-<tr>
-<td align="center">## 例1：采药问题</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">这是<a href="https://www.oj.swust.edu.cn:50443/problem/show/1046" target="_blank" rel="noopener">题目链接</a></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
 </tbody></table>
+<h2 id="例1：采药问题"><a href="#例1：采药问题" class="headerlink" title="例1：采药问题"></a>例1：采药问题</h2><p>这是<a href="https://www.oj.swust.edu.cn:50443/problem/show/1046" target="_blank" rel="noopener">题目链接</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e3</span>+<span class="number">5</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">int</span> t,m;  </span><br><span class="line">     <span class="built_in">cin</span>&gt;&gt;t&gt;&gt;m;</span><br><span class="line">     <span class="keyword">int</span> w[maxn],v[maxn];</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">     &#123;</span><br><span class="line">          <span class="built_in">cin</span>&gt;&gt;w[i]&gt;&gt;v[i];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">int</span> dp[<span class="number">105</span>][<span class="number">1005</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=t;j++)</span><br><span class="line">          &#123;</span><br><span class="line">               dp[i][j]=dp[i<span class="number">-1</span>][j];</span><br><span class="line">               <span class="keyword">if</span>(j&gt;=w[i])</span><br><span class="line">               &#123;</span><br><span class="line">                    dp[i][j]=max(dp[i][j],dp[i<span class="number">-1</span>][j-w[i]]+v[i]);<span class="comment">//状态转移方程</span></span><br><span class="line">               &#125;</span><br><span class="line">          &#125;</span><br><span class="line">     <span class="built_in">cout</span>&lt;&lt;dp[m][t];     </span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>将上面的代码做一个滚动优化：</p>
 <p>根据状态转移方程，当前状态只和其前一个状态有关，所以只需使用dp[2][x]。</p>
@@ -347,6 +324,15 @@
   
   
   <nav class="article-nav">
+    
+      <a href="/2020/07/15/%E7%AE%80%E5%8D%95%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            简单数学知识
+          
+        </div>
+      </a>
     
     
       <a href="/2020/07/07/%E9%98%B6%E6%AE%B5%E5%B0%8F%E7%BB%93/" class="article-nav-link">
