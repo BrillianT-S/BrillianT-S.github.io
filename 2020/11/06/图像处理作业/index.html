@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    图像处理第一次作业 |  马小跳的秘密基地
+    图像处理作业 |  马小跳的秘密基地
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -40,7 +40,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-图像处理第一次作业" class="article article-type-post" itemscope
+  <article id="post-图像处理作业" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -48,7 +48,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  图像处理第一次作业
+  图像处理作业
 </h1>
  
 
@@ -57,7 +57,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/11/06/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="article-date">
+      <a href="/2020/11/06/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%BD%9C%E4%B8%9A/" class="article-date">
   <time datetime="2020-11-06T15:00:43.000Z" itemprop="datePublished">2020-11-06</time>
 </a>
       
@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">869</span>
+            <span class="post-count">2.2k</span>
         </span>
     </span>
 
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">10 分钟</span>
         </span>
     </span>
 </div>
@@ -88,6 +88,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -100,7 +102,7 @@
       
 
       
-      <p>第一次作业内容如图：<br><img src="https://gitee.com/brillianttt/picture/raw/master/img/homework.png" alt=""><br>在刚留这个作业时学长给了一些解题的思路，快到作业截止提交的时间才做出来。。。</p>
+      <h1 id="第一次作业"><a href="#第一次作业" class="headerlink" title="第一次作业"></a>第一次作业</h1><p>内容如图：<br><img src="https://gitee.com/brillianttt/picture/raw/master/img/homework.png" alt=""><br>在刚留这个作业时学长给了一些解题的思路，快到作业截止提交的时间才做出来。。。</p>
 <p>言归正传，这道题的思路比较简单，就是把图片先进行灰度化和二值化的处理，然后再将二值图中的黑色部分找到，将原图中的蓝色部分变为黑色，最后裁剪就可以了，但中间有一些小坑，在最开始做的时候出现并困扰了我挺长时间，之前得到的图片是这个样子的：<br><img src="https://gitee.com/brillianttt/picture/raw/master/img/quanyacihu.png" alt=""><br>这是因为在处理时没有将图片进行二值化处理，而图片本身像素不够高，很多地方的颜色都有细微的差别，因而在直接暴力将背景中的蓝色修改为黑色是不可行的，会出现“其岸势犬牙差互”的情况。</p>
 <p>经过学长提醒，我后来的思路是这样子的：</p>
 <p>1、对图片进行灰度化、二值化处理，并将处理后的图片保存到另一个变量part中。</p>
@@ -112,7 +114,22 @@
 <p>最终结果：<br><img src="https://gitee.com/brillianttt/picture/raw/master/img/ans.png" alt=""></p>
 <p>附一个颜色表，在最后遍历的时候可以换成不同的颜色玩~</p>
 <p><img src="https://gitee.com/brillianttt/picture/raw/master/img/cjys.png" alt=""></p>
-
+<h1 id="第二次作业"><a href="#第二次作业" class="headerlink" title="第二次作业"></a>第二次作业</h1><p>内容如图：<br><img src="https://gitee.com/brillianttt/picture/raw/master/img/homework2.png" alt=""><br>分析：本题需要注意除了要把苹果部分抠出来，还需要将苹果缩小，放到背景图中的“上层”。</p>
+<p>思路可以是这样的：</p>
+<p>1、先对苹果的logo进行灰度化和二值化的处理。</p>
+<p>2、然后将图二裁剪到和图一一样大，将图一再次缩小，放到背景图片中，将其余部分变黑。</p>
+<p>ac代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/imgproc/imgproc.hpp"</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core/core.hpp&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv; <span class="comment">//opencv 的命名空间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	Mat pingguo, beijing,temp,pg;</span><br><span class="line">	temp=imread(<span class="string">"D:\\code\\opencv\\resources\\apple.jpg"</span>);</span><br><span class="line">	beijing = imread(<span class="string">"D:\\code\\opencv\\resources\\background.jpg"</span>);</span><br><span class="line">	Rect r = Rect(<span class="number">0</span>, <span class="number">0</span>, temp.rows, temp.cols);</span><br><span class="line">	putText(temp, <span class="string">"Apple"</span>, Point(temp.rows/<span class="number">2</span><span class="number">-80</span>, temp.cols<span class="number">-30</span>),FONT_HERSHEY_SIMPLEX, <span class="number">2</span>, Scalar(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>, LINE_AA, <span class="literal">false</span>);</span><br><span class="line">	cvtColor(temp,pg, COLOR_BGR2GRAY);<span class="comment">//灰度化</span></span><br><span class="line">	<span class="comment">//imshow("灰度图", pg);</span></span><br><span class="line">	threshold(pg,pg ,<span class="number">100</span>, <span class="number">255</span>, THRESH_BINARY);<span class="comment">//二值化</span></span><br><span class="line">	<span class="comment">//imshow("二值图", pg);</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line">	a.push_back(IMWRITE_JPEG_QUALITY);  <span class="comment">//选择jpeg</span></span><br><span class="line">	a.push_back(<span class="number">255</span>); <span class="comment">//在这个填入你要的图片质量（255为无损保存，一定要进行255，否则图像失真）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	imwrite(<span class="string">"D:\\code\\opencv\\resources\\x.jpg"</span>, pg, a);  </span><br><span class="line">	<span class="comment">//imwrite("D:\\code\\opencv\\resources\\x.jpg", pg);</span></span><br><span class="line">	pingguo = imread(<span class="string">"D:\\code\\opencv\\resources\\x.jpg"</span>);<span class="comment">//,IMREAD_UNCHANGED);</span></span><br><span class="line">	pingguo = imread(<span class="string">"d:\\code\\opencv\\resources\\x.jpg"</span>);</span><br><span class="line">	<span class="comment">//imshow("apple",pingguo);</span></span><br><span class="line">	beijing = beijing(r);</span><br><span class="line">	<span class="comment">//imshow("background", beijing);</span></span><br><span class="line">	imwrite(<span class="string">"d:\\code\\opencv\\resources\\caijian.jpg"</span>, beijing);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;pingguo.rows ;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt; pingguo.cols;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> ((<span class="keyword">int</span>)pingguo.at&lt;Vec3b&gt;(i, j)[<span class="number">0</span>] &gt;= <span class="number">240</span> &amp;&amp; (<span class="keyword">int</span>)pingguo.at&lt;Vec3b&gt;(i, j)[<span class="number">0</span>] &lt;= <span class="number">255</span> &amp;&amp; pingguo.at&lt;Vec3b&gt;(i, j)[<span class="number">1</span>] &gt;= <span class="number">240</span> &amp;&amp; pingguo.at&lt;Vec3b&gt;(i, j)[<span class="number">1</span>] &lt;= <span class="number">255</span> &amp;&amp; pingguo.at&lt;Vec3b&gt;(i, j)[<span class="number">2</span>] &gt;= <span class="number">240</span> &amp;&amp; pingguo.at&lt;Vec3b&gt;(i, j)[<span class="number">2</span>] &lt;= <span class="number">255</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//cout &lt;&lt; "i=" &lt;&lt; i &lt;&lt; ' ' &lt;&lt; "j=" &lt;&lt; j &lt;&lt; endl;</span></span><br><span class="line">					beijing.at&lt;Vec3b&gt;(i,j)[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">					beijing.at&lt;Vec3b&gt;(i,j)[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">					beijing.at&lt;Vec3b&gt;(i,j)[<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	imshow(<span class="string">"beijing"</span>, beijing);</span><br><span class="line">	waitKey(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这种方法在实现的过程中出现了许多问题：</p>
+<p>1、没有将苹果logo缩小。</p>
+<p>2、苹果的处理不精细，在嵌套的for循环中本应该有判断语句中0（蓝色值）为255，而这个代码中判断如果大于240即可，这是因为在图片的二值化处理过程中，经过二值化处理的图片本应该是单通道输入和输出的，但是输入后再读取这个图片的时候是三通道读取，就会出现问题。在上面的给出的代码是经过了处理，保存的是单通道图片，但是我在遍历图片的rgb三个值时还能发现除了0和255外其他的值（如1、2、3、254、253）百度了下这是会经常出现的失真问题，我就将这部分代码由直接判断是否为255（白色）变为了判断一个范围值。</p>
+<p>困难总比办法多，但是不慌，还有机会，现在有第二种思路：</p>
+<p>1、还是先按照苹果logo图片的大小截取一部分背景，以此作为最终背景。</p>
+<p>2、将“apple”插入苹果图，然后进行图片的灰度化和二值化，再利用resize()函数将图片缩小为原来的0.5倍并保存。</p>
+<p>3、制作苹果图的掩膜。(我失败了，明天问问学长)</p>
+<p>4、与背景图进行与运算，得出最终图片。</p>
+<p>先放一个铁憨憨的ac代码（还是没用上掩膜操作）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/imgproc/imgproc.hpp"</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core/core.hpp&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv; <span class="comment">//opencv 的命名空间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Mat pingguo, beijing,temp,pg,mask,xpg;</span><br><span class="line">	temp=imread(<span class="string">"D:\\code\\opencv\\resources\\apple.jpg"</span>);</span><br><span class="line">	beijing = imread(<span class="string">"D:\\code\\opencv\\resources\\background.jpg"</span>);</span><br><span class="line">	Rect r = Rect(<span class="number">200</span>, <span class="number">200</span>, temp.rows, temp.cols);</span><br><span class="line">	putText(temp, <span class="string">"Apple"</span>, Point(temp.rows/<span class="number">2</span><span class="number">-80</span>, temp.cols<span class="number">-30</span>),FONT_HERSHEY_SIMPLEX, <span class="number">2</span>, Scalar(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>, LINE_AA, <span class="literal">false</span>);<span class="comment">//将字母插入，后续补充</span></span><br><span class="line">	cvtColor(temp,pg, COLOR_BGR2GRAY);<span class="comment">//灰度化</span></span><br><span class="line">	<span class="comment">//imshow("灰度图", pg);</span></span><br><span class="line">	threshold(pg,pg ,<span class="number">100</span>, <span class="number">255</span>, THRESH_BINARY);<span class="comment">//二值化</span></span><br><span class="line">	<span class="comment">//imshow("二值图", pg);</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line">	a.push_back(IMWRITE_JPEG_QUALITY);  <span class="comment">//选择jpeg</span></span><br><span class="line">	a.push_back(<span class="number">255</span>); <span class="comment">//在这个填入需要的图片质量（255为无损保存，一定要进行255，否则图像失真）</span></span><br><span class="line">	resize(pg, pingguo, Size(), <span class="number">0.5</span>, <span class="number">0.5</span>);</span><br><span class="line">	imwrite(<span class="string">"D:\\code\\opencv\\resources\\x.jpg"</span>, pingguo, a);</span><br><span class="line">	<span class="comment">//imwrite("D:\\code\\opencv\\resources\\x.jpg", pg);</span></span><br><span class="line">	imshow(<span class="string">"temp"</span>, pingguo);</span><br><span class="line">	pingguo = imread(<span class="string">"d:\\code\\opencv\\resources\\x.jpg"</span>);</span><br><span class="line">	<span class="comment">//imshow("apple",pingguo);</span></span><br><span class="line">	beijing = beijing(r);</span><br><span class="line">	<span class="comment">//imshow("background", beijing);</span></span><br><span class="line">	imwrite(<span class="string">"d:\\code\\opencv\\resources\\caijian.jpg"</span>, beijing);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>;i&lt; beijing.rows ;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>;j&lt; beijing.cols;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (!(i - pingguo.rows / <span class="number">2</span> &gt;= <span class="number">0</span> &amp;&amp; j - pingguo.cols / <span class="number">2</span> &gt;= <span class="number">0</span> &amp;&amp; i - pingguo.rows / <span class="number">2</span> &lt; pingguo.rows &amp;&amp; j - pingguo.cols / <span class="number">2</span> &lt; pingguo.cols &amp;&amp; (<span class="keyword">int</span>)pingguo.at&lt;Vec3b&gt;(i - pingguo.rows / <span class="number">2</span>, j - pingguo.cols / <span class="number">2</span>)[<span class="number">0</span>] &gt;= <span class="number">0</span> &amp;&amp; (<span class="keyword">int</span>)pingguo.at&lt;Vec3b&gt;(i - pingguo.rows / <span class="number">2</span>, j - pingguo.cols / <span class="number">2</span>)[<span class="number">0</span>] &lt;= <span class="number">5</span> &amp;&amp; pingguo.at&lt;Vec3b&gt;(i - pingguo.rows / <span class="number">2</span>, j - pingguo.cols/<span class="number">2</span>)[<span class="number">1</span>] &gt;= <span class="number">0</span> &amp;&amp; pingguo.at&lt;Vec3b&gt;(i - pingguo.rows / <span class="number">2</span>, j - pingguo.cols/<span class="number">2</span>)[<span class="number">1</span>] &lt;= <span class="number">10</span> &amp;&amp; pingguo.at&lt;Vec3b&gt;(i - pingguo.rows / <span class="number">2</span>, j - pingguo.cols/<span class="number">2</span>)[<span class="number">2</span>] &gt;= <span class="number">0</span> &amp;&amp; pingguo.at&lt;Vec3b&gt;(i - pingguo.rows / <span class="number">2</span>, j - pingguo.cols/<span class="number">2</span>)[<span class="number">2</span>] &lt;= <span class="number">10</span>))</span><br><span class="line">			&#123;</span><br><span class="line">					beijing.at&lt;Vec3b&gt;(i,j)[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">					beijing.at&lt;Vec3b&gt;(i, j)[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">					beijing.at&lt;Vec3b&gt;(i, j)[<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	imwrite(<span class="string">"D:\\code\\opencv\\resources\\ans2.jpg"</span>,beijing);</span><br><span class="line">	imshow(<span class="string">"beijing"</span>, beijing);</span><br><span class="line">	waitKey(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
       <!-- reward -->
       
@@ -180,7 +197,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://brillianttt.gitee.io/2020/11/06/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://brillianttt.gitee.io/2020/11/06/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%BD%9C%E4%B8%9A/" alt="微信分享二维码">
     </div>
 </div>
 
