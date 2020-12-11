@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    动态规划之最长上升子序列 |  马小跳的秘密基地
+    博客的音乐功能设置 |  马小跳的秘密基地
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -40,7 +40,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-动态规划之最长上升子序列" class="article article-type-post" itemscope
+  <article id="post-博客的音乐功能设置" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -48,7 +48,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  动态规划之最长上升子序列
+  博客的音乐功能设置
 </h1>
  
 
@@ -57,12 +57,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/" class="article-date">
-  <time datetime="2020-04-05T11:30:22.000Z" itemprop="datePublished">2020-04-05</time>
+      <a href="/2020/12/11/%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%9F%B3%E4%B9%90%E5%8A%9F%E8%83%BD%E8%AE%BE%E7%BD%AE/" class="article-date">
+  <time datetime="2020-12-11T12:09:27.504Z" itemprop="datePublished">2020-12-11</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+    <a class="article-category-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a>
   </div>
 
       
@@ -72,7 +72,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">538</span>
+            <span class="post-count">210</span>
         </span>
     </span>
 
@@ -81,7 +81,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
@@ -92,8 +92,6 @@
 
     
     
-    <div class="tocbot"></div>
-
 
 
 
@@ -106,50 +104,7 @@
       
 
       
-      <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><blockquote>
-<p>动态规划指的是将一个繁杂的问题分解成子问题之后，通过求解子问题的最优解，从而求得整体最优解。</p>
-</blockquote>
-<h2 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h2><h2 id="问题如下："><a href="#问题如下：" class="headerlink" title="问题如下："></a>问题如下：</h2><p>输入数据：</p>
-<blockquote>
-<p>输入的第一行是序列的长度N(1&lt;=N&lt;=1000),第一行给出序列的N个整数，这些整数的取值范围在0-10000.   </p>
-</blockquote>
-<p>输出要求：   </p>
-<blockquote>
-<p>最长上升子序列的长度。   </p>
-</blockquote>
-<p>输入样例：   </p>
-<blockquote>
-<p>7<br>1 7 3 5 9 4 8   </p>
-</blockquote>
-<p>输出样例：</p>
-<blockquote>
-<p>4</p>
-</blockquote>
-<p>范例代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> maxlen[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">int</span> s[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; s[i];</span><br><span class="line">		maxlen[i] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (s[i] &gt; s[j])</span><br><span class="line">			&#123;</span><br><span class="line">				maxlen[i] = max(maxlen[i], maxlen[j] + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *max_element(maxlen + <span class="number">1</span>, maxlen + n + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>讲解：   </p>
-<ol>
-<li><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> maxlen[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">int</span> s[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; s[i];</span><br><span class="line">		maxlen[i] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这一部分是输入数据，并且让存储 <strong>以当前下标为终点的子序列的个数</strong> 的maxlen数组都初始化为1.   </p>
-</blockquote>
-</li>
-</ol>
-<hr>
-<ol start="2">
-<li><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (s[i] &gt; s[j])</span><br><span class="line">			&#123;</span><br><span class="line">				maxlen[i] = max(maxlen[i], maxlen[j] + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这一部分是正式求解&ensp;以当前下标为终点的最长上升子序列&ensp;的长度，并且分别存储在maxlen数组内。<br>i每往后循环一次，j就要将i之前的数据都循环一遍。<br>当s[i]&gt;s[j]时就要求maxlen[j]+1与maxlen[i]之间的最大值进行maxlen[i]的更新。<br><strong>注</strong>：之所以需要每次都求maxlen[i]和maxlen[j]+1的最大值，而不直接将maxlen[j]+1赋值给maxlen[i]，是因为maxlen[i]之前的更新可能已经使maxlen[i]&gt;maxlen[[j]+1，故 此时maxlen[i]应保持不变。   </p>
-</blockquote>
-</li>
-</ol>
-<hr>
-<ol start="3">
-<li>最后一部分为输出部分，调用max_element函数输出manlen数组内的最大值。<blockquote>
-<p><strong>注</strong>：max_element函数返回值是一个指针<br>&emsp;&emsp;max_element和max函数需要调用头文件algorithm</p>
-</blockquote>
-</li>
-</ol>
+      <p>今天刚开始设置博客的音乐组件，留下一点小笔记备用😁<br>首先，音乐的获取可以通过这两个方式：<br>1、可以在网易云音乐上直接搜索喜欢的歌曲，找到外部链接<br>2、自己创建网易云歌单，添加喜欢的歌曲，再找到自己歌单的外部链接<br>之后再主题在文件夹下搜索music，找到music.ejs文件,在其中将”iframe”处替换成刚找到链接。<br>最后将主题的yml文件中的#music部分做修改，更改http链接与音乐id就大功告成啦！<br>(ps：在代码中修改各项参数可以更改音乐播放器的大小，将宽度和高度改为0或1可以隐藏音乐播放器，做到完完全全的“背景音乐”)<br><img src="https://gitee.com/brillianttt/picture/raw/master/img/x.png" alt=""><br><img src="https://note.youdao.com/yws/api/personal/file/WEB8e92762b82b63f0f10fd39953654fcea?method=download&shareKey=41acc37b7bd62cd4d0a1d3bb25442abe" alt=""><br><img src="https://note.youdao.com/yws/api/personal/file/WEB014b5bc3c9678761b0382c783e7a8956?method=download&shareKey=df5bb3add491d92dca3a0d772486cd8a" alt=""></p>
 
       
       <!-- reward -->
@@ -218,14 +173,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://brillianttt.gitee.io/2020/04/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://brillianttt.gitee.io/2020/12/11/%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%9F%B3%E4%B9%90%E5%8A%9F%E8%83%BD%E8%AE%BE%E7%BD%AE/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
 
     </footer>
@@ -236,19 +191,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/13/C++STL%E5%AE%B9%E5%99%A8%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            C++STL学习笔记
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/04/03/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="article-nav-link">
+      <a href="/2020/11/22/%E6%95%B2%E4%BB%A3%E7%A0%81%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%B8%B8%E8%A7%81bug%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">排序算法</div>
+        <div class="article-nav-title">敲代码时遇到的常见bug及解决方法</div>
       </a>
     
   </nav>
