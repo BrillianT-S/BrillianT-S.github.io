@@ -72,7 +72,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">566</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -81,7 +81,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -125,9 +125,12 @@
 </li>
 </ul>
 <h3 id="基于深度学习的汉字识别方法"><a href="#基于深度学习的汉字识别方法" class="headerlink" title="基于深度学习的汉字识别方法"></a>基于深度学习的汉字识别方法</h3><p>目前基于深度学习的文字识别主要有两种方案 ，即文字检测加汉字识别的方法 ，分两步依次进行。而另一种则是直接训练一个端到端的模型同时完成文字检测和文字识别。 </p>
-<h4 id="经典目标检测算法"><a href="#经典目标检测算法" class="headerlink" title="经典目标检测算法"></a>经典目标检测算法</h4><h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><p>##卷积神经网络（Convolutional Neural Networks, CNN）</p>
-<p>卷积神经网络（Convolutional Neural Networks, CNN）是一类包含<a href="https://baike.baidu.com/item/卷积/9411006" target="_blank" rel="noopener">卷积</a>计算且具有深度结构的<a href="https://baike.baidu.com/item/前馈神经网络/7580523" target="_blank" rel="noopener">前馈神经网络</a>（Feedforward Neural Networks），是<a href="https://baike.baidu.com/item/深度学习/3729729" target="_blank" rel="noopener">深度学习</a>（deep learning）的代表算法之一 [1-2] 。卷积神经网络具有<a href="https://baike.baidu.com/item/表征学习/2140515" target="_blank" rel="noopener">表征学习</a>（representation learning）能力，能够按其阶层结构对输入信息进行平移不变分类（shift-invariant classification），因此也被称为“平移不变人工神经网络（Shift-Invariant Artificial Neural Networks, SIANN）” [3] </p>
-
+<h4 id="经典目标检测算法"><a href="#经典目标检测算法" class="headerlink" title="经典目标检测算法"></a>经典目标检测算法</h4><p>在介绍汉字识别算法之前,首先引入几种在目标检测领域应用非常广泛的经典模型,目前主流的文字识别算法大多基于这些优化改进而来。FCNN etwork是由美国加州大学伯克利分校的Long 等人于2015年8月在CVPR上提出的一种图像分割的算法,主要结构如图所示：</p>
+<p><img src="https://gitee.com/brillianttt/picture/raw/master/img/a.jpg" alt=""></p>
+<p>该算法首次将端到端的卷积网络推广到语义分割的任务中 ，提出了完全卷积网络的概念，可以接受任意尺寸的输入图像，用反卷积层来上采样最后卷积层的feature map，可以恢复原图像的大小并完成对每个像素的预测 ，同时保留原图像的空间信息。</p>
+<h4 id="文字检测识别算法"><a href="#文字检测识别算法" class="headerlink" title="文字检测识别算法"></a>文字检测识别算法</h4><h3 id="研究前景与应用"><a href="#研究前景与应用" class="headerlink" title="研究前景与应用"></a>研究前景与应用</h3><p>​        如何提高汉字的识别率仍是目前的研究热点，现有的汉字识别还只对背景简单的印刷体文字取得较好的效果,比如名片识别、证件识别等。但对于一些复杂的场景,如自然场景图片中光照、文字的大小、样式使得汉字识别处理问题极具挑战性,现有的技术还远远没有达到令人满意的程度。<br>​        当前汉字识别技术的应用领域很广泛”,特别是在无人车、智慧医疗、自动化办公、金融欺诈检测、恐怖主义威胁级别检测等领域发挥着举足轻重的作用。例如用OCR进行文稿的识别录入,虽然国内外市场中已有很多这样的产品,但这类技术依然不算成熟,有表格、图形的文档常常需要手工干预。对图形、文本等混排的复杂版面进行自动切分的汉字识别系统也是目前研究的重点之一,特别是应用在对出版刊物的识别上,方便人们快速进行信息录入。还有对卡证文字的识别,如对身份证、银行卡、名片等识别,分别应用于用户注册、银行开户、交通出行等多种场景中。<br>​      汉字识别系统还可广泛应用于政府、税务、医疗、金融等各行业的各种表格数据的输入和处理,这些领域常常需要统计大量的人员数据信息,有些还是手写完成的。自动文字识别,信息录入将极大地提高工作效率。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><p>卷积神经网络（Convolutional Neural Networks, CNN）是一类包含<a href="https://baike.baidu.com/item/卷积/9411006" target="_blank" rel="noopener">卷积</a>计算且具有深度结构的<a href="https://baike.baidu.com/item/前馈神经网络/7580523" target="_blank" rel="noopener">前馈神经网络</a>（Feedforward Neural Networks），是<a href="https://baike.baidu.com/item/深度学习/3729729" target="_blank" rel="noopener">深度学习</a>（deep learning）的代表算法之一 。卷积神经网络具有<a href="https://baike.baidu.com/item/表征学习/2140515" target="_blank" rel="noopener">表征学习</a>（representation learning）能力，能够按其阶层结构对输入信息进行平移不变分类（shift-invariant classification），因此也被称为“平移不变人工神经网络（Shift-Invariant Artificial Neural Networks, SIANN）” </p>
+<h2 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h2>
       
       <!-- reward -->
       
