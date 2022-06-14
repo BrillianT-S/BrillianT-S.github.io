@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    OpenCV学习 |  马小跳的秘密基地
+    MySQL学习 |  马小跳的秘密基地
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -48,7 +48,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  OpenCV学习
+  MySQL学习
 </h1>
  
 
@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">299</span>
+            <span class="post-count">3k</span>
         </span>
     </span>
 
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">12 分钟</span>
         </span>
     </span>
 </div>
@@ -102,16 +102,17 @@
       
 
       
-      <h1 id="mysql基本操作"><a href="#mysql基本操作" class="headerlink" title="mysql基本操作"></a>mysql基本操作</h1><p>创建数据库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名;</span><br></pre></td></tr></table></figure>
+      <h1 id="mysql基本操作"><a href="#mysql基本操作" class="headerlink" title="mysql基本操作"></a>mysql基本操作</h1><h3 id="创建数据库："><a href="#创建数据库：" class="headerlink" title="创建数据库："></a>创建数据库：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名;</span><br></pre></td></tr></table></figure>
 
-<p>删除数据库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database 数据库名;</span><br></pre></td></tr></table></figure>
+<h3 id="删除数据库："><a href="#删除数据库：" class="headerlink" title="删除数据库："></a>删除数据库：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database 数据库名;</span><br></pre></td></tr></table></figure>
 
-<p>选择数据库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br></pre></td></tr></table></figure>
+<h3 id="选择数据库："><a href="#选择数据库：" class="headerlink" title="选择数据库："></a>选择数据库：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br></pre></td></tr></table></figure>
 
-<p>数值类型：</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="数值类型："><a href="#数值类型：" class="headerlink" title="数值类型："></a>数值类型：</h3><p>MySQL 支持所有标准 SQL 数值数据类型。</p>
+<p>这些类型包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL 和 NUMERIC)，以及近似数值数据类型(FLOAT、REAL 和 DOUBLE PRECISION)。</p>
+<p>关键字INT是INTEGER的同义词，关键字DEC是DECIMAL的同义词。</p>
+<p>BIT数据类型保存位字段值，并且支持 MyISAM、MEMORY、InnoDB 和 BDB表。</p>
+<p>作为 SQL 标准的扩展，MySQL 也支持整数类型 TINYINT、MEDIUMINT 和 BIGINT。下面的表显示了需要的每个整数类型的存储和范围。</p>
 <table>
 <thead>
 <tr>
@@ -179,6 +180,274 @@
 <td align="left">小数值</td>
 </tr>
 </tbody></table>
+<h3 id="日期类型"><a href="#日期类型" class="headerlink" title="日期类型"></a>日期类型</h3><p>表示时间值的日期和时间类型为DATETIME、DATE、TIMESTAMP、TIME和YEAR。</p>
+<p>每个时间类型有一个有效值范围和一个”零”值，当指定不合法的MySQL不能表示的值时使用”零”值。</p>
+<p>TIMESTAMP类型有专有的自动更新特性，将在后面描述。</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">大小 ( bytes)</th>
+<th align="left">范围</th>
+<th align="left">格式</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">DATE</td>
+<td align="left">3</td>
+<td align="left">1000-01-01/9999-12-31</td>
+<td align="left">YYYY-MM-DD</td>
+<td align="left">日期值</td>
+</tr>
+<tr>
+<td align="left">TIME</td>
+<td align="left">3</td>
+<td align="left">‘-838:59:59’/‘838:59:59’</td>
+<td align="left">HH:MM:SS</td>
+<td align="left">时间值或持续时间</td>
+</tr>
+<tr>
+<td align="left">YEAR</td>
+<td align="left">1</td>
+<td align="left">1901/2155</td>
+<td align="left">YYYY</td>
+<td align="left">年份值</td>
+</tr>
+<tr>
+<td align="left">DATETIME</td>
+<td align="left">8</td>
+<td align="left">1000-01-01 00:00:00/9999-12-31 23:59:59</td>
+<td align="left">YYYY-MM-DD HH:MM:SS</td>
+<td align="left">混合日期和时间值</td>
+</tr>
+<tr>
+<td align="left">TIMESTAMP</td>
+<td align="left">4</td>
+<td align="left">1970-01-01 00:00:00/2038结束时间是第 <strong>2147483647</strong> 秒，北京时间 <strong>2038-1-19 11:14:07</strong>，格林尼治时间 2038年1月19日 凌晨 03:14:07</td>
+<td align="left">YYYYMMDD HHMMSS</td>
+<td align="left">混合日期和时间值，时间戳</td>
+</tr>
+</tbody></table>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串类型指CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM和SET。该节描述了这些类型如何工作以及如何在查询中使用这些类型。</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">大小</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CHAR</td>
+<td align="left">0-255 bytes</td>
+<td align="left">定长字符串</td>
+</tr>
+<tr>
+<td align="left">VARCHAR</td>
+<td align="left">0-65535 bytes</td>
+<td align="left">变长字符串</td>
+</tr>
+<tr>
+<td align="left">TINYBLOB</td>
+<td align="left">0-255 bytes</td>
+<td align="left">不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td align="left">TINYTEXT</td>
+<td align="left">0-255 bytes</td>
+<td align="left">短文本字符串</td>
+</tr>
+<tr>
+<td align="left">BLOB</td>
+<td align="left">0-65 535 bytes</td>
+<td align="left">二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td align="left">TEXT</td>
+<td align="left">0-65 535 bytes</td>
+<td align="left">长文本数据</td>
+</tr>
+<tr>
+<td align="left">MEDIUMBLOB</td>
+<td align="left">0-16 777 215 bytes</td>
+<td align="left">二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td align="left">MEDIUMTEXT</td>
+<td align="left">0-16 777 215 bytes</td>
+<td align="left">中等长度文本数据</td>
+</tr>
+<tr>
+<td align="left">LONGBLOB</td>
+<td align="left">0-4 294 967 295 bytes</td>
+<td align="left">二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td align="left">LONGTEXT</td>
+<td align="left">0-4 294 967 295 bytes</td>
+<td align="left">极大文本数据</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong>：char(n) 和 varchar(n) 中括号中 n 代表字符的个数，并不代表字节个数，比如 CHAR(30) 就可以存储 30 个字符。</p>
+<p>CHAR 和 VARCHAR 类型类似，但它们保存和检索的方式不同。它们的最大长度和是否尾部空格被保留等方面也不同。在存储或检索过程中不进行大小写转换。</p>
+<p>BINARY 和 VARBINARY 类似于 CHAR 和 VARCHAR，不同的是它们包含二进制字符串而不要非二进制字符串。也就是说，它们包含字节字符串而不是字符字符串。这说明它们没有字符集，并且排序和比较基于列值字节的数值值。</p>
+<p>BLOB 是一个二进制大对象，可以容纳可变数量的数据。有 4 种 BLOB 类型：TINYBLOB、BLOB、MEDIUMBLOB 和 LONGBLOB。它们区别在于可容纳存储范围不同。</p>
+<p>有 4 种 TEXT 类型：TINYTEXT、TEXT、MEDIUMTEXT 和 LONGTEXT。对应的这 4 种 BLOB 类型，可存储的最大长度不同，可根据实际情况选择。</p>
+<h2 id="建表和删除表"><a href="#建表和删除表" class="headerlink" title="建表和删除表"></a>建表和删除表</h2><p>建表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS &#96;runoob_tbl&#96;(</span><br><span class="line">   &#96;runoob_id&#96; INT UNSIGNED AUTO_INCREMENT,</span><br><span class="line">   &#96;runoob_title&#96; VARCHAR(100) NOT NULL,</span><br><span class="line">   &#96;runoob_author&#96; VARCHAR(40) NOT NULL,</span><br><span class="line">   &#96;submission_date&#96; DATE,</span><br><span class="line">   PRIMARY KEY ( &#96;runoob_id&#96; )</span><br><span class="line">)ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果你不想字段为 <strong>NULL</strong> 可以设置字段的属性为 <strong>NOT NULL</strong>， 在操作数据库时如果输入该字段的数据为<strong>NULL</strong> ，就会报错。</li>
+<li>AUTO_INCREMENT定义列为自增的属性，一般用于主键，数值会自动加1。</li>
+<li>PRIMARY KEY关键字用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。</li>
+<li>ENGINE 设置存储引擎，CHARSET 设置编码</li>
+</ul>
+<p>删除表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE runoob_tbl;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CURD"><a href="#CURD" class="headerlink" title="CURD"></a>CURD</h2><p>创建（Create） 、 更新（Update） 、 读取（Read） 和 删除（Delete）</p>
+<p>插入数据（Create）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name ( field1, field2,...fieldN )</span><br><span class="line">                       VALUES</span><br><span class="line">                       ( value1, value2,...valueN );</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果数据是字符型，必须使用单引号或者双引号，如：”value”。</li>
+</ul>
+<p>查找数据（Read） ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name,column_name</span><br><span class="line">FROM table_name</span><br><span class="line">[WHERE Clause]</span><br><span class="line">[LIMIT N][ OFFSET M]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查询语句中你可以使用一个或者多个表，表之间使用逗号(,)分割，并使用WHERE语句来设定查询条件。</li>
+<li>SELECT 命令可以读取一条或者多条记录。</li>
+<li>你可以使用星号（*）来代替其他字段，SELECT语句会返回表的所有字段数据</li>
+<li>你可以使用 WHERE 语句来包含任何条件。</li>
+<li>你可以使用 LIMIT 属性来设定返回的记录数。</li>
+<li>你可以通过OFFSET指定SELECT语句开始查询的数据偏移量。默认情况下偏移量为0。</li>
+</ul>
+<p>删除数据（Delete）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM table_name [WHERE Clause]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果没有指定 WHERE 子句，MySQL 表中的所有记录将被删除。</li>
+<li>你可以在 WHERE 子句中指定任何条件</li>
+<li>您可以在单个表中一次性删除记录。</li>
+</ul>
+<p>修改数据更新（Update）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name SET field1&#x3D;new-value1, field2&#x3D;new-value2</span><br><span class="line">[WHERE Clause]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>你可以同时更新一个或多个字段。</li>
+<li>你可以在 WHERE 子句中指定任何条件。</li>
+<li>你可以在一个单独表中同时更新数据。</li>
+</ul>
+<h3 id="where子句"><a href="#where子句" class="headerlink" title="where子句"></a>where子句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT field1, field2,...fieldN FROM table_name1, table_name2...</span><br><span class="line">[WHERE condition1 [AND [OR]] condition2.....</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查询语句中你可以使用一个或者多个表，表之间使用逗号<strong>,</strong> 分割，并使用WHERE语句来设定查询条件。</li>
+<li>你可以在 WHERE 子句中指定任何条件。</li>
+<li>你可以使用 AND 或者 OR 指定一个或多个条件。</li>
+<li>WHERE 子句也可以运用于 SQL 的 DELETE 或者 UPDATE 命令。</li>
+<li>WHERE 子句类似于程序语言中的 if 条件，根据 MySQL 表中的字段值来读取指定的数据。</li>
+</ul>
+<p>以下为操作符列表，可用于 WHERE 子句中。</p>
+<p>下表中实例假定 A 为 10, B 为 20</p>
+<table>
+<thead>
+<tr>
+<th align="left">操作符</th>
+<th align="left">描述</th>
+<th align="left">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">=</td>
+<td align="left">等号，检测两个值是否相等，如果相等返回true</td>
+<td align="left">(A = B) 返回false。</td>
+</tr>
+<tr>
+<td align="left">&lt;&gt;, !=</td>
+<td align="left">不等于，检测两个值是否相等，如果不相等返回true</td>
+<td align="left">(A != B) 返回 true。</td>
+</tr>
+<tr>
+<td align="left">&gt;</td>
+<td align="left">大于号，检测左边的值是否大于右边的值, 如果左边的值大于右边的值返回true</td>
+<td align="left">(A &gt; B) 返回false。</td>
+</tr>
+<tr>
+<td align="left">&lt;</td>
+<td align="left">小于号，检测左边的值是否小于右边的值, 如果左边的值小于右边的值返回true</td>
+<td align="left">(A &lt; B) 返回 true。</td>
+</tr>
+<tr>
+<td align="left">&gt;=</td>
+<td align="left">大于等于号，检测左边的值是否大于或等于右边的值, 如果左边的值大于或等于右边的值返回true</td>
+<td align="left">(A &gt;= B) 返回false。</td>
+</tr>
+<tr>
+<td align="left">&lt;=</td>
+<td align="left">小于等于号，检测左边的值是否小于或等于右边的值, 如果左边的值小于或等于右边的值返回true</td>
+<td align="left">(A &lt;= B) 返回 true。</td>
+</tr>
+</tbody></table>
+<p>如果我们想在 MySQL 数据表中读取指定的数据，WHERE 子句是非常有用的。</p>
+<p>使用主键来作为 WHERE 子句的条件查询是非常快速的。</p>
+<p>如果给定的条件在表中没有任何匹配的记录，那么查询不会返回任何数据。</p>
+<h3 id="like子句（模糊查询）"><a href="#like子句（模糊查询）" class="headerlink" title="like子句（模糊查询）"></a>like子句（模糊查询）</h3><p>我们知道在 MySQL 中使用 SQL SELECT 命令来读取数据， 同时我们可以在 SELECT 语句中使用 WHERE 子句来获取指定的记录。</p>
+<p>WHERE 子句中可以使用等号 <strong>=</strong> 来设定获取数据的条件，如 “runoob_author = ‘RUNOOB.COM’”。</p>
+<p>但是有时候我们需要获取 runoob_author 字段含有 “COM” 字符的所有记录，这时我们就需要在 WHERE 子句中使用 SQL LIKE 子句。</p>
+<p>SQL LIKE 子句中使用百分号 <strong>%</strong>字符来表示任意字符，类似于UNIX或正则表达式中的星号 *****。</p>
+<p>如果没有使用百分号 <strong>%</strong>, LIKE 子句与等号 <strong>=</strong> 的效果是一样的。</p>
+<p>以下是 SQL SELECT 语句使用 LIKE 子句从数据表中读取数据的通用语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT field1, field2,...fieldN </span><br><span class="line">FROM table_name</span><br><span class="line">WHERE field1 LIKE condition1 [AND [OR]] filed2 &#x3D; &#39;somevalue&#39;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>你可以在 WHERE 子句中指定任何条件。</li>
+<li>你可以在 WHERE 子句中使用LIKE子句。</li>
+<li>你可以使用LIKE子句代替等号 <strong>=</strong>。</li>
+<li>LIKE 通常与 <strong>%</strong> 一同使用，类似于一个元字符的搜索。</li>
+<li>你可以使用 AND 或者 OR 指定一个或多个条件。</li>
+<li>你可以在 DELETE 或 UPDATE 命令中使用 WHERE…LIKE 子句来指定条件。</li>
+</ul>
+<h2 id="UNION操作符"><a href="#UNION操作符" class="headerlink" title="UNION操作符"></a>UNION操作符</h2><p>MySQL UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。多个 SELECT 语句会删除重复的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT expression1, expression2, ... expression_n</span><br><span class="line">FROM tables</span><br><span class="line">[WHERE conditions]</span><br><span class="line">UNION [ALL | DISTINCT]</span><br><span class="line">SELECT expression1, expression2, ... expression_n</span><br><span class="line">FROM tables</span><br><span class="line">[WHERE conditions];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>expression1, expression2, … expression_n</strong>: 要检索的列。</li>
+<li><strong>tables:</strong> 要检索的数据表。</li>
+<li><strong>WHERE conditions:</strong> 可选， 检索条件。</li>
+<li><strong>DISTINCT:</strong> 可选，删除结果集中重复的数据。默认情况下 UNION 操作符已经删除了重复数据，所以 DISTINCT 修饰符对结果没啥影响。</li>
+<li><strong>ALL:</strong> 可选，返回所有结果集，包含重复数据。</li>
+</ul>
+<h2 id="MySQL排序（ORDER-BY）"><a href="#MySQL排序（ORDER-BY）" class="headerlink" title="MySQL排序（ORDER BY）"></a>MySQL排序（ORDER BY）</h2><p>使用ORDER BY子句来设定按哪个总段的哪种方式来进行排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT field1, field2,...fieldN FROM table_name1, table_name2...</span><br><span class="line">ORDER BY field1 [ASC [DESC][默认 ASC]], [field2...] [ASC [DESC][默认 ASC]]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>你可以使用任何字段来作为排序的条件，从而返回排序后的查询结果。</li>
+<li>你可以设定多个字段来排序。</li>
+<li>你可以使用 ASC 或 DESC 关键字来设置查询结果是按升序或降序排列。 默认情况下，它是按升序排列。</li>
+<li>你可以添加 WHERE…LIKE 子句来设置条件。</li>
+</ul>
+<h2 id="GROUP-BY-语句"><a href="#GROUP-BY-语句" class="headerlink" title="GROUP BY 语句"></a>GROUP BY 语句</h2><p>GROUP BY 语句根据一个或多个列对结果集进行分组。</p>
+<p>在分组的列上我们可以使用 COUNT, SUM, AVG,等函数（替代样例中的function）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name, function(column_name)</span><br><span class="line">FROM table_name</span><br><span class="line">WHERE column_name operator value</span><br><span class="line">GROUP BY column_name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="表的连接"><a href="#表的连接" class="headerlink" title="表的连接"></a>表的连接</h2><p>JOIN 按照功能大致分为如下三类：</p>
+<ul>
+<li><strong>INNER JOIN（内连接,或等值连接）</strong>：获取两个表中字段匹配关系的记录。</li>
+<li><strong>LEFT JOIN（左连接）：</strong>获取左表所有记录，即使右表没有对应匹配的记录。</li>
+<li><strong>RIGHT JOIN（右连接）：</strong> 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。</li>
+</ul>
+<h2 id="NULL值的处理"><a href="#NULL值的处理" class="headerlink" title="NULL值的处理"></a>NULL值的处理</h2><p> MySQL 使用 SQL SELECT 命令及 WHERE 子句来读取数据表中的数据,但是当提供的查询条件字段为 NULL 时，该命令可能就无法正常工作。</p>
+<p>为了处理这种情况，MySQL提供了三大运算符:</p>
+<ul>
+<li><strong>IS NULL:</strong> 当列的值是 NULL,此运算符返回 true。</li>
+<li><strong>IS NOT NULL:</strong> 当列的值不为 NULL, 运算符返回 true。</li>
+<li><strong>&lt;=&gt;:</strong> 比较操作符（不同于 = 运算符），当比较的的两个值相等或者都为 NULL 时返回 true。</li>
+</ul>
+<p>关于 NULL 的条件比较运算是比较特殊的。你不能使用 = NULL 或 != NULL 在列中查找 NULL 值 。</p>
+<p>在 MySQL 中，NULL 值与任何其它值的比较（即使是 NULL）永远返回 NULL，即 NULL = NULL 返回 NULL 。</p>
+<p>MySQL 中处理 NULL 使用 IS NULL 和 IS NOT NULL 运算符。</p>
 
       
       <!-- reward -->
@@ -264,6 +533,15 @@
   
   
   <nav class="article-nav">
+    
+      <a href="/2022/04/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            排序算法的复杂度
+          
+        </div>
+      </a>
     
     
       <a href="/2022/04/03/%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84/" class="article-nav-link">
